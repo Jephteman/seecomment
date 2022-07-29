@@ -1,7 +1,7 @@
 # seecomment
 ce programme facilite la tâche d'un penetesteur ou d'un jouer de CTF en ce qui concerne la lecture de collentaire dans les pages html
 
-#Usage
+# Usage
                                                                   
 ┌──(root💀localhost)-[/home/jephte/git_down/seecomment]
 └─# python main.py -h
@@ -16,17 +16,17 @@ options:
   -p P        Destination port
   -v V        Affiche la version
 
-#Exemple
+# Exemple
 ──(jephte㉿localhost)-[~/git_down/seecomment]
 └─$ python main.py http://localhost/wordpress
  Nous commmencons 
 
- --- http://localhost/wordpress/ ---
+ --- http://localhost/wordpress/ ---         <--url
 s.w.org' />
 *! This file is auto-generated
  Early exit if a skip-link target can't be located.
  Get the site wrapper.
- The skip-link will be injected in the beginning of it.
+ The skip-link will be injected in the beginning of it.       <-- commentaire
  Early exit if the root element was not found.
  Get the skip-link target's ID, and generate one if it doesn't exist.
  Create the skip link.
