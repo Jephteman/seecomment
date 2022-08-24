@@ -26,7 +26,7 @@ def search_comment(text):
 						if text[i:i+1] == '-':
 							i+=1
 							boucle2=True
-							temp_tewt=''
+							temp_text=''
 							while boucle2:
 								if text[i:i+1] == '-':
 									i+=1
@@ -74,7 +74,7 @@ def search_comment(text):
 				return comment
 				break
 		except KeyboardInterrupt:
-			pass
+			exit()
 
 #fonction  obtenir les liens
 def search_links(url):
@@ -131,7 +131,7 @@ def search_links(url):
 			links=links_ok+links_no
 			return links
 		except KeyboardInterrupt:
-			pass
+			exit()
 
 def verif(x):
 	if 'https://' in x[0:8] or 'http://' in x[0:8]:
