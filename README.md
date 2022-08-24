@@ -1,53 +1,38 @@
-# seecomment
-ce programme facilite la tâche d'un penetesteur ou d'un jouer de CTF en ce qui concerne la lecture de collentaire dans les pages html
+# Seecomment
 
-# Usage
-                                                                  
-┌──(root💀localhost)-[/home/jephte/git_down/seecomment]
+Seecomment est **un script offencife** permettant de lire les commentaires dans des pages HTML, et pour ce faire il procede par **fuzzing**
 
-└─# python main.py -h
-usage: main.py [-h] [-u U] [-p P] [-v V] url
+Seeecoment ayant trouvée un commentaire , il afffiche le lien vers la page du commentaire ensuite le commmentaire.
 
-positional arguments:
+## Auteur
 
-  url         Lien vers la cible
+Jephte Man(Jephte Mangenda)
+[Facebook]('https://facebook.com/jephteman')
+[Twitter]('https://twitter.com/mr_me101)
+[Tryhackme]('https://tryhackme.com/p/jephte')
 
-options:
+Version  1.0
 
-  -h, --help  show this help message and exit
-  
-  -u U        User-agent
-  
-  -p P        Destination port
-  
-  -v V        Affiche la version
+## Installation
 
-# Exemple
-──(jephte㉿localhost)-[~/git_down/seecomment]
+Pour installer ce script , rien de plus simple que d'executé ces commandes
 
-└─$ python main.py http://localhost/wordpress
+> git clone https://github.com/Jephteman/seecomment.git
+> cd seecomment
+> python3 seecoment.py http://exemple.xyz
 
- Nous commmencons 
 
- ---http://localhost/wordpress/ ---         <--url
- 
-s.w.org' />
+## Usage
 
-*! This file is auto-generated
+  python seecoment.py [options] url
 
- Early exit if a skip-link target can't be located.
- 
- Get the site wrapper.
- 
- The skip-link will be injected in the beginning of it.       <-- commentaires
- 
- Early exit if the root element was not found.
- 
- Get the skip-link target's ID, and generate one if it doesn't exist.
- 
- Create the skip link.
- 
- Inject the skip link.
+  Positional arguments:
+    url         Lien de la cible
 
- ---http://localhost/wordpress/wp-content/themes/twentytwentytwo/style.css?ver=1.0 ---
+  optional arguments:
+    -h, --help  show this help message and exit
+    -u         User-agent
+    -p         Desctination port (defaut 80 ou 443)
+    -v         Affiche la version
 
+## Exemple
