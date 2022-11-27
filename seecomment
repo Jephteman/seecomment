@@ -1,0 +1,109 @@
+#!/bin/python3
+
+import argparse
+import ses_fonctions as sf  # module cree pour ce programme
+
+__version__ = '1.1'
+__author__ = 'Mr me (Jephte Mangenda)'
+
+print(""" Bienvenu dans seecoment v{} coding by {}""".format(__version__,__author__))
+print(' https://github.com/Jephteman/seecomment \n')
+
+def start(parser):
+	url=parser.url
+	cible=sf.racine(parser.url)
+	if sf.verif(parser.url) != True:
+		cible=sf.verif(parser.url)
+
+	if type(parser.u) != type(None):
+		def f():
+			return parser.u
+		sf.rq.utils.default_user_agent=f
+
+	if type(parser.p) != type(None):
+		if 'https://' in cible[0:8]:
+			sf.rq.utils.DEFAULT_PORTS['https']=parser.p
+		elif 'http://' in cible[0:7] :
+			sf.rq.utils.DEFAULT_PORTS['http']=parser.p
+		else:
+			raise Exception('Protocole non pris en charge : {}'.format(cible))
+
+	deja_visiter=[url]
+
+	try:
+		if type(parser.w) == type(None):
+			links , comments=sf.search_comment(url)
+			while len(links) != 0:
+				if len(comments) != 0:
+					print(url+'\n')
+					for i in comments:
+						print(i)
+
+					comments=[]
+
+				for link in links:
+					if link in deja_visiter:
+						links.remove(link)
+					else:
+						if sf.compare(url,link):
+							tmp_links, tmp_comments = sf.search_comment(link)
+							for tmp_link in tmp_links:
+								if tmp_link in (deja_visiter and links):
+									tmp_links.remove(tmp_link)
+								else:
+									if sf.compare(url,tmp_link):
+										links.append(tmp_link)
+									else:
+										tmp_links.remove(tmp_link)
+										if len(tmp_comments) != 0:
+											print(link)
+											for tmp_comment in tmp_comments:
+												print(tmp_comment)
+
+
+		else:
+
+			try:
+				wordlist=open(parser.w,'r')
+			except:
+
+				print('[+] Nous n\'avons pas eu acces a la wordlist')
+				exit(1)
+
+			wordlist = wordlist.readlines()
+			for i in wordlist:
+				if i[0] == "#":
+					pass
+				elif i =='\n':
+					pass
+				else:
+					links , comments=sf.search_comment(url+i)
+					if len(comments) != 0:
+						for comment in comments:
+							print(comment)
+
+						print('\n')
+
+
+
+	except KeyboardInterrupt:
+		print('bye, bye !')
+	except TypeError:
+		print('Aucun resultants')
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser()
+	parser.add_argument(
+		'url', type=str,help='Lien vers la cible'
+		)
+	parser.add_argument(
+		'-w',type=str,help='Wordlist'
+	)
+	parser.add_argument(
+		'-u', default='seecomment 1.0' , help='User-agent',type=str
+		)
+	parser.add_argument(
+		'-p',default=None,help='Port',type=int
+		)
+	args = parser.parse_args()
+	start(args)

@@ -1,8 +1,8 @@
 # Seecomment
 
-Seecomment est **un script offencife** permettant de lire les commentaires dans des pages HTML, et pour ce faire il procede par **fuzzing**
+Seecomment est **un script offensif** permettant de lire les commentaires dans des pages HTML, et pour ce faire il procede par **fuzzing**
 
-Seeecoment ayant trouvée un commentaire , il afffiche le lien vers la page du commentaire ensuite le commmentaire.
+Seeecoment ayant trouvée un commentaire , il afffiche le lien vers la page du commentaire suivi du commmentaire.
 
 ## Auteur
 
@@ -18,7 +18,7 @@ Pour installer ce script , rien de plus simple que d'executé ces commandes
 > cd seecomment
 
 
-> python3 main.py http://exemple.xyz
+> python3 main.py http://localhost/mysite
 
 
 ## Usage
@@ -28,7 +28,6 @@ Pour installer ce script , rien de plus simple que d'executé ces commandes
   Positional arguments:
 
     url         Lien de la cible
-
 
   optional arguments:
 
@@ -41,5 +40,3 @@ Pour installer ce script , rien de plus simple que d'executé ces commandes
     -v         Affiche la version
 
     -w         Wordlist
-
-## Exemple
